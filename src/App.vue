@@ -4,14 +4,13 @@
       <h1>EasyBuy</h1>
       <nav>
         <button v-on:click="init" v-if="is_auth">Inicio</button>
-        <button v-on:click="getBalance" v-if="is_auth">Saldo</button>
-        <button v-if="is_auth">Transacción</button>
+        <button v-on:click="getProduct" v-if="is_auth">Producto</button>
         <button v-if="is_auth">Cerrar Sesión</button>
       </nav>
     </div>
     <div class="main-component"></div>
     <div class="footer">
-      <h2>Misión TIC 2022</h2>
+      <h2>Misión TIC 2022 - G3M2-8</h2>
     </div>
   </div>
 </template>
@@ -25,9 +24,25 @@ export default {
       is_auth: localStorage.getItem("isAuth") || false,
     };
   },
-  methods: {},
+  methods: {
+    init: function () {
+      if (this.$route.name != "Product") {
+        let productid = parseInt(localStorage.getItem("current_productid"));
+        this.$router.push({ name: "Product", params: { productid: productid } });
+      }
+    },
+    getProduct: function () {
+      if (this.$route.name != "Product") {
+        let productid = parseInt(localStorage.getItem("current_productid"));
+        this.$router.push({
+          name: "Product",
+          params: { productid: productid },
+        });
+      }
+    },
+  },
   beforeCreate: function () {
-    localStorage.setItem("current_username", "camilo24");
+    localStorage.setItem("current_productid", 1138060);
     localStorage.setItem("isAuth", true);
   },
 };
