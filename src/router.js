@@ -1,6 +1,6 @@
 import vueRouter from 'vue-router'
 import Product from './components/Product'
-//import ProductCreate from './components/ProductCreate'
+import Initialpage from './components/InitialPage'
 import App from './App'
 
 const router = new vueRouter({
@@ -10,13 +10,18 @@ const router = new vueRouter({
             {
                 path: '/',
                 name: "root",
-                component: App
+                component: Initialpage
             },
             {
                 path: '/product/:productid',
                 name: "product",
                 component: Product
             },
+            {
+                path: '/inicio/',
+                name: "inicio",
+                component: Initialpage
+            }
         ]
     })
 

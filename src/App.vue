@@ -3,12 +3,14 @@
     <div class="header">
       <h1>EasyBuy</h1>
       <nav>
-        <button v-on:click="init" v-if="is_auth">Inicio</button>
-        <button v-on:click="getProduct" v-if="is_auth">Producto</button>
-        <button v-if="is_auth">Cerrar Sesión</button>
+        <button v-on:click="init">Inicio</button>
+        <button v-on:click="getProduct">Producto</button>
+        <button>Cerrar Sesión</button>
       </nav>
     </div>
-    <div class="main-component"></div>
+    <div class="main-component">
+      <router-view/>
+    </div>
     <div class="footer">
       <h2>Misión TIC 2022 - G3M2-8</h2>
     </div>
@@ -21,21 +23,20 @@ export default {
   components: {},
   data: function () {
     return {
-      is_auth: localStorage.getItem("isAuth") || false,
     };
   },
   methods: {
     init: function () {
-      if (this.$route.name != "Product") {
-        let productid = parseInt(localStorage.getItem("current_productid"));
-        this.$router.push({ name: "Product", params: { productid: productid } });
+      if (this.$route.name != "inicio") {
+        let productid = localStorage.getItem("current_productid");
+        this.$router.push({ name: "inicio", params: { productid: productid } });
       }
     },
     getProduct: function () {
-      if (this.$route.name != "Product") {
+      if (this.$route.name != "product") {
         let productid = parseInt(localStorage.getItem("current_productid"));
         this.$router.push({
-          name: "Product",
+          name: "product",
           params: { productid: productid },
         });
       }
@@ -43,7 +44,6 @@ export default {
   },
   beforeCreate: function () {
     localStorage.setItem("current_productid", 1138060);
-    localStorage.setItem("isAuth", true);
   },
 };
 </script>
