@@ -43,7 +43,7 @@ export default {
     },
   },
   beforeCreate: function () {
-    localStorage.setItem("current_productid", 1138060);
+    localStorage.setItem("current_productid", 0);
   },
 };
 </script>
