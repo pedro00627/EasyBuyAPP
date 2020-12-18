@@ -56,21 +56,21 @@ export default {
 
     createProduct: function () {
       let post = {
-        productid: result.data.productid,
-        productName: result.data.productName,
-        category: result.data.category,
-        picture: result.data.picture,
-        sellUnit: result.data.sellUnit,
-        price: result.data.price,
-        qtyAvaliable: result.data.qtyAvaliable,
-        brand: result.data.brand,
+        "productId": parseInt(this.productid),
+        "productName": this.productName,
+        "category": this.category,
+        "picture": this.picture,
+        "sellUnit": this.sellUnit,
+        "price": this.price,
+        "qtyAvaliable": this.qtyAvaliable,
+        "brand": this.brand
       };
       axios
         .post("https://g3m2-8-sprint2.herokuapp.com/product/create/", post, {
           headers: {},
         })
         .then((result) => {
-          alert("Creación Correcta " + result.data.productid);
+          alert("Creación Correcta " + result.data);
         })
         .catch((error) => {
           alert("ERROR Creación");
