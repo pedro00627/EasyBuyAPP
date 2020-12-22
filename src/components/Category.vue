@@ -47,7 +47,7 @@ export default {
         })
         .catch((error) => {
           if (error=404) {
-            alert("El producto no existe, a continuacion puedes crearlo");
+            alert("La categoría no existe, a continuacion puedes crearla");
             self.categoryName = "";
             self.categoryDescription = "";
             self.show=true;
