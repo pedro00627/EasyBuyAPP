@@ -56,15 +56,6 @@ export default {
     };
   },
   methods: {
-    reiniciar: function(){
-          self.productName = "";
-          self.category = "";
-          self.picture = "";
-          self.sellUnit = "";
-          self.price = "";
-          self.qtyAvaliable = "";
-          self.brand = "";
-    },
     getProduct: function () {
       //this.productid = productid;
       let self = this;
@@ -100,6 +91,7 @@ export default {
     },
 
     createProduct: function () {
+      let self = this;
       let post = {
         "productId": parseInt(this.productid),
         "productName": this.productName,
@@ -131,6 +123,7 @@ export default {
         });
     },
     updateProduct: function () {
+      let self = this;
       let put = {
         "productId": parseInt(this.productid),
         "productName": this.productName,
@@ -147,8 +140,6 @@ export default {
         })
         .then((result) => {
           alert("Actualizacion Correcta");
-          self.creacion=false;
-          self.show=false;
           self.productName = "";
           self.category = "";
           self.picture = "";
@@ -156,6 +147,8 @@ export default {
           self.price = "";
           self.qtyAvaliable = "";
           self.brand = "";
+          self.creacion=false;
+          self.show=false;
         })
         .catch((error) => {
           alert("ERROR Actualizacion");

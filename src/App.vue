@@ -4,8 +4,8 @@
       <h1>EasyBuy</h1>
       <nav>
         <button v-on:click="init">Inicio</button>
-        <button v-on:click="getProduct">Producto</button>
-        <button>Cerrar Sesión</button>
+        <button v-on:click="gotoProduct">Producto</button>
+        <button v-on:click="gotoCategory">Categoria</button>
       </nav>
     </div>
     <div class="main-component">
@@ -28,22 +28,19 @@ export default {
   methods: {
     init: function () {
       if (this.$route.name != "inicio") {
-        let productid = localStorage.getItem("current_productid");
-        this.$router.push({ name: "inicio", params: { productid: productid } });
+        this.$router.push({ name: "inicio" });
       }
     },
-    getProduct: function () {
+    gotoProduct: function () {
       if (this.$route.name != "product") {
-        let productid = parseInt(localStorage.getItem("current_productid"));
-        this.$router.push({
-          name: "product",
-          params: { productid: productid },
-        });
+        this.$router.push({name: "product" });
       }
     },
-  },
-  beforeCreate: function () {
-    localStorage.setItem("current_productid", 0);
+    gotoCategory: function () {
+      if (this.$route.name != "category") {
+        this.$router.push({ name: "category" });
+      }
+    },
   },
 };
 </script>
